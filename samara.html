@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Samara 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #3b003b, #000);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Corações flutuando */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); }
+      100% { transform: translateY(-120vh) rotate(45deg); }
+    }
+
+    /* Centro */
+    .center {
+      position: relative;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .name {
+      font-size: 72px;
+      color: #ff4fd8;
+      text-shadow: 0 0 20px #ff4fd8, 0 0 40px #ff008c;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* Coração grande */
+    .big-heart {
+      width: 220px;
+      height: 220px;
+      background: #ff0055;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      z-index: -1;
+      box-shadow: 0 0 50px #ff0055;
+    }
+
+    .big-heart::before,
+    .big-heart::after {
+      content: '';
+      width: 220px;
+      height: 220px;
+      background: #ff0055;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .big-heart::before { top: -110px; left: 0; }
+    .big-heart::after { left: -110px; top: 0; }
+
+    /* Ícones */
+    .icon {
+      position: absolute;
+      font-size: 40px;
+      animation: spin 12s linear infinite;
+    }
+
+    .bat { color: #b36bff; }
+    .skate { color: #00ffcc; }
+    .plant { color: #3cff00; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg) translateX(260px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(260px) rotate(-360deg); }
+    }
+
+    /* Fumaça */
+    .smoke {
+      position: absolute;
+      bottom: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+      filter: blur(30px);
+      animation: smoke 6s infinite alternate;
+    }
+
+    @keyframes smoke {
+      from { transform: translateY(0); opacity: 0.4; }
+      to { transform: translateY(-60px); opacity: 0.7; }
+    }
+  
+    /* Personagem fofo (gif) */
+    .chara {
+      position: absolute;
+      width: 120px;
+      animation: fly 12s linear infinite;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    @keyframes fly {
+      from { transform: translateY(110vh) scale(0.8); }
+      to { transform: translateY(-140vh) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- muitos corações -->
+  <script>
+    // corações
+    for (let i = 0; i < 80; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = 6 + Math.random() * 6 + 's';
+      h.style.opacity = Math.random();
+      document.body.appendChild(h);
+    }
+
+    // vários personagens fofos
+    for (let i = 0; i < 12; i++) {
+      const c = document.createElement('img');
+      c.src = 'sinnamarrol samara.gif';
+      c.className = 'chara';
+      c.style.left = Math.random() * 90 + 'vw';
+      c.style.animationDuration = 8 + Math.random() * 10 + 's';
+      c.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(c);
+    }
+  </script>
+
+  <div class="center">
+    <div class="big-heart"></div>
+    <div class="name">Samara</div>
+
+    <div class="icon bat" style="animation-delay: 0s">🦇</div>
+    <div class="icon skate" style="animation-delay: 2s">🛹</div>
+    <div class="icon plant" style="animation-delay: 4s">🌿</div>
+  </div>
+
+  <div class="smoke" style="left: 20%"></div>
+  <div class="smoke" style="left: 60%"></div>
+
+</body>
+</html>
